@@ -26,6 +26,12 @@
         <label>duração:</label>
         <input type="text" name="duracao" minlength="3" required><br><br>
 
+        <label>valor total:</label>
+        <input type="text" name="valortotal" minlength="3" required><br><br>
+
+        <label>descrição:</label>
+        <input type="text" name="descricao" minlength="3" required><br><br>
+
         <input type="submit" name="listar" value="listar">
 
 
@@ -38,6 +44,8 @@
                     <th>Nome</th>
                     <th>nível</th>
                     <th>duração</th>
+                    <th>valortotal</th>
+                    <th>descricao</th>
                 </tr>
 
             <?php
@@ -51,6 +59,8 @@
                             <td> " . $item["nome"] . "</td>
                             <td> " . $item["nivel"] . "</td>
                             <td> " . $item["duracao"] . "</td>
+                            <td> " . $item["valortotal"] . "</td>
+                            <td> " . $item["descricao"] . "</td>
                             <td> <a href='deletar.php?id=" . $item["idcurso"] .  "'>Excluir</a> </td>
                             <td> <a href='editar.php?id=" . $item["idcurso"] .  "'>atualizar</a> </td>
                         </tr>
