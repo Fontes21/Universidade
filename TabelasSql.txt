@@ -1,0 +1,102 @@
+CADASTRAR
+
+
+CREATE TABLE curso
+(
+	idcurso				INT PRIMARY KEY AUTO_INCREMENT,
+    	nome					VARCHAR(100),
+    	nível					varchar(100),
+    	duração 				int,
+    	valortotal				varchar(100),
+    	descrição 				varchar(100)
+);
+
+
+DELIMITER //
+
+ CREATE PROCEDURE picurso
+(
+    	_nome					VARCHAR(100),
+    	_nível					varchar(100),
+    	_duração 				int,
+    	_valortotal				varchar(100),
+    	_descrição 				varchar(100)
+)
+
+
+BEGIN
+INSERT INTO categoria (nome, nivel, duracao, valortotal, descricao)
+    VALUES (_nome,_nível,_duracao,_valortotal,_descricao);
+
+END //
+
+----------------------------------------------------------------------------------------------------------
+
+LISTAR 
+
+
+DELIMITER //
+CREATE PROCEDURE psListarcurso
+(
+	IN _nome		VARCHAR(100)
+)
+
+
+BEGIN
+SELECT 
+	P.idcurso,
+    C.nome AS nomecurso
+FROM curso P 
+JOIN categoria C ON C.nomecurso = P.idcurso
+WHERE P.idusuario = _id;
+END
+
+----------------------------------------------------------------------------------------------------------
+
+ATUALIZAR 
+
+DELIMITER //
+CREATE PROCEDURE puatualizar
+(
+ _id 		int,
+_nome		varchar (100),
+_nivel 		varchar (100),
+_duracao 	int,
+_valortotal varchar (100),
+_descricao  varchar (400)
+
+)
+
+BEGIN
+	UPDATE usuario
+    	SET nome = _nome
+    WHERE idusuario = _id;
+   END //
+----------------------------------------------------------------------------------------------------------
+
+DELETAR
+
+DELIMITER  //
+CREATE PROCEDURE pdcurso
+(
+in _id 		int
+)
+BEGIN
+	DELETE FROM curso WHERE idcurso = _id;
+    END  //
+----------------------------------------------------------------------------------------------------------
+
+BUSCAR
+
+DELIMITER // 
+CREATE PROCEDURE psbuscarcurso
+(
+IN    id 	int
+    
+)
+BEGIN 
+
+SELECT * FROM curso
+where idcurso = id; 
+
+END //
